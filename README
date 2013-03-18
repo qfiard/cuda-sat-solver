@@ -1,0 +1,4 @@
+cuda-sat-solver
+===============
+
+An implementation of a SAT solver using the CUDA library
