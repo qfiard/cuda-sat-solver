@@ -1,0 +1,2 @@
+A great source for SAT benchmarks in CNF format:
+http://www.miroslav-velev.com/sat_benchmarks.html
