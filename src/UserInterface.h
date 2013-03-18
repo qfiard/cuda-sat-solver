@@ -14,9 +14,10 @@ class UserInterface {
 public:
 	static void alert_unsat(UNSAT &e);
 	static void alert_sat(SAT &e);
-    static void printClause(clause& c);
-    static void printFormula(formula& f);
-    static void printAssignment(assignment& a);
+    static void print(clause& c);
+    static void print(formula& f);
+    static void print(assignment& a);
+    static void print(benchmark_data& d);
 };
 
 #endif /* USERINTERFACE_H_ */

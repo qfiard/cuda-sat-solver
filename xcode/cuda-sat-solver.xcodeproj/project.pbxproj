@@ -1,0 +1,268 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		832BB27316F664E000EEA4D2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832BB27216F664E000EEA4D2 /* main.cpp */; };
+		832BB28216F6650200EEA4D2 /* CNFParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832BB27B16F664F000EEA4D2 /* CNFParser.cpp */; };
+		832BB28316F6650200EEA4D2 /* SATSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832BB27D16F664F000EEA4D2 /* SATSolver.cpp */; };
+		832BB28416F6650200EEA4D2 /* UserInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 832BB28016F664F000EEA4D2 /* UserInterface.cpp */; };
+		83752F1A16F7488300826A1C /* Benchmark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83752F1816F7488300826A1C /* Benchmark.cpp */; };
+		83752F1D16F74C3000826A1C /* CUDABenchmark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83752F1B16F74C3000826A1C /* CUDABenchmark.cpp */; };
+		83752F2016F74C4100826A1C /* CPUBenchmark.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83752F1E16F74C4100826A1C /* CPUBenchmark.cpp */; };
+		83752F5416F75E9E00826A1C /* types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83752F5316F75E9E00826A1C /* types.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		832BB26D16F664E000EEA4D2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		832BB26F16F664E000EEA4D2 /* test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = test; path = "cuda-sat-solver"; sourceTree = BUILT_PRODUCTS_DIR; };
+		832BB27216F664E000EEA4D2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = main.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		832BB27B16F664F000EEA4D2 /* CNFParser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CNFParser.cpp; path = "../../cuda-sat-solver/src/CNFParser.cpp"; sourceTree = "<group>"; };
+		832BB27C16F664F000EEA4D2 /* CNFParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CNFParser.h; path = "../../cuda-sat-solver/src/CNFParser.h"; sourceTree = "<group>"; };
+		832BB27D16F664F000EEA4D2 /* SATSolver.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = SATSolver.cpp; path = "../../cuda-sat-solver/src/SATSolver.cpp"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		832BB27E16F664F000EEA4D2 /* SATSolver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SATSolver.h; path = "../../cuda-sat-solver/src/SATSolver.h"; sourceTree = "<group>"; };
+		832BB27F16F664F000EEA4D2 /* types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = types.h; path = "../../cuda-sat-solver/src/types.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		832BB28016F664F000EEA4D2 /* UserInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = UserInterface.cpp; path = "../../cuda-sat-solver/src/UserInterface.cpp"; sourceTree = "<group>"; };
+		832BB28116F664F000EEA4D2 /* UserInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UserInterface.h; path = "../../cuda-sat-solver/src/UserInterface.h"; sourceTree = "<group>"; };
+		83752F1816F7488300826A1C /* Benchmark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = Benchmark.cpp; path = "../../cuda-sat-solver/src/Benchmark.cpp"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		83752F1916F7488300826A1C /* Benchmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = Benchmark.h; path = "../../cuda-sat-solver/src/Benchmark.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		83752F1B16F74C3000826A1C /* CUDABenchmark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = CUDABenchmark.cpp; path = "../../cuda-sat-solver/src/CUDABenchmark.cpp"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		83752F1C16F74C3000826A1C /* CUDABenchmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CUDABenchmark.h; path = "../../cuda-sat-solver/src/CUDABenchmark.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		83752F1E16F74C4100826A1C /* CPUBenchmark.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = CPUBenchmark.cpp; path = "../../cuda-sat-solver/src/CPUBenchmark.cpp"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		83752F1F16F74C4100826A1C /* CPUBenchmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = CPUBenchmark.h; path = "../../cuda-sat-solver/src/CPUBenchmark.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		83752F5316F75E9E00826A1C /* types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = types.cpp; path = "../../cuda-sat-solver/src/types.cpp"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		83752F5516F7604A00826A1C /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = config.h; path = "../../cuda-sat-solver/src/config.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		832BB26C16F664E000EEA4D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		832BB26616F664E000EEA4D2 = {
+			isa = PBXGroup;
+			children = (
+				832BB27116F664E000EEA4D2 /* src */,
+				832BB27016F664E000EEA4D2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		832BB27016F664E000EEA4D2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				832BB26F16F664E000EEA4D2 /* test */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		832BB27116F664E000EEA4D2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				832BB27B16F664F000EEA4D2 /* CNFParser.cpp */,
+				832BB27C16F664F000EEA4D2 /* CNFParser.h */,
+				832BB27D16F664F000EEA4D2 /* SATSolver.cpp */,
+				832BB27E16F664F000EEA4D2 /* SATSolver.h */,
+				832BB27F16F664F000EEA4D2 /* types.h */,
+				83752F5316F75E9E00826A1C /* types.cpp */,
+				832BB28016F664F000EEA4D2 /* UserInterface.cpp */,
+				832BB28116F664F000EEA4D2 /* UserInterface.h */,
+				832BB27216F664E000EEA4D2 /* main.cpp */,
+				83752F1816F7488300826A1C /* Benchmark.cpp */,
+				83752F1916F7488300826A1C /* Benchmark.h */,
+				83752F1B16F74C3000826A1C /* CUDABenchmark.cpp */,
+				83752F1C16F74C3000826A1C /* CUDABenchmark.h */,
+				83752F1E16F74C4100826A1C /* CPUBenchmark.cpp */,
+				83752F1F16F74C4100826A1C /* CPUBenchmark.h */,
+				83752F5516F7604A00826A1C /* config.h */,
+			);
+			name = src;
+			path = ../src;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		832BB26E16F664E000EEA4D2 /* cuda-sat-solver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 832BB27816F664E100EEA4D2 /* Build configuration list for PBXNativeTarget "cuda-sat-solver" */;
+			buildPhases = (
+				832BB26B16F664E000EEA4D2 /* Sources */,
+				832BB26C16F664E000EEA4D2 /* Frameworks */,
+				832BB26D16F664E000EEA4D2 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "cuda-sat-solver";
+			productName = test;
+			productReference = 832BB26F16F664E000EEA4D2 /* test */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		832BB26716F664E000EEA4D2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "École polytechnique";
+			};
+			buildConfigurationList = 832BB26A16F664E000EEA4D2 /* Build configuration list for PBXProject "cuda-sat-solver" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 832BB26616F664E000EEA4D2;
+			productRefGroup = 832BB27016F664E000EEA4D2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				832BB26E16F664E000EEA4D2 /* cuda-sat-solver */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		832BB26B16F664E000EEA4D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				832BB27316F664E000EEA4D2 /* main.cpp in Sources */,
+				832BB28216F6650200EEA4D2 /* CNFParser.cpp in Sources */,
+				832BB28316F6650200EEA4D2 /* SATSolver.cpp in Sources */,
+				832BB28416F6650200EEA4D2 /* UserInterface.cpp in Sources */,
+				83752F1A16F7488300826A1C /* Benchmark.cpp in Sources */,
+				83752F1D16F74C3000826A1C /* CUDABenchmark.cpp in Sources */,
+				83752F2016F74C4100826A1C /* CPUBenchmark.cpp in Sources */,
+				83752F5416F75E9E00826A1C /* types.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		832BB27616F664E100EEA4D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		832BB27716F664E100EEA4D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		832BB27916F664E100EEA4D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "cuda-sat-solver";
+			};
+			name = Debug;
+		};
+		832BB27A16F664E100EEA4D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_OPTIMIZATION_LEVEL = 3;
+				PRODUCT_NAME = "cuda-sat-solver";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		832BB26A16F664E000EEA4D2 /* Build configuration list for PBXProject "cuda-sat-solver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				832BB27616F664E100EEA4D2 /* Debug */,
+				832BB27716F664E100EEA4D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		832BB27816F664E100EEA4D2 /* Build configuration list for PBXNativeTarget "cuda-sat-solver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				832BB27916F664E100EEA4D2 /* Debug */,
+				832BB27A16F664E100EEA4D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 832BB26716F664E000EEA4D2 /* Project object */;
+}

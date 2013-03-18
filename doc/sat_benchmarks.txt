@@ -1,2 +1,3 @@
-A great source for SAT benchmarks in CNF format:
-http://www.miroslav-velev.com/sat_benchmarks.html
+Great sources for SAT benchmarks in CNF format:
+http://www.miroslav-velev.com/sat_benchmarks.html (huge problems)
+http://www.cs.ubc.ca/~hoos/SATLIB/benchm.html

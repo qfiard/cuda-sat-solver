@@ -47,7 +47,6 @@ void SATSolver::unit_propagate(literal l, formula& f)
 		clause& c = f.clauses[i];
 		for(int j=0 ; j<c.length ; j++)
 		{
-            literal tmp = c.literals[j];
 			if(c.literals[j]==l)
 			{
 				remove_clause_from_formula(i,f);
@@ -195,59 +194,9 @@ void SATSolver::check_sat_status(formula& f, assignment& partial)
     }
 }
 
-static clause copy(clause c)
-{
-    clause res = c;
-    
-    res.literals = new literal[c.length];
-
-    for(int i=0 ; i<c.length ; i++)
-    {
-        res.literals[i] = c.literals[i];
-    }
-
-    return res;
-}
-
-static formula copy(formula& f)
-{
-    formula res = f;
-
-    res.initialNbOfClauses = f.nbOfClauses;
-    res.clauses = new clause[f.nbOfClauses];
-
-    for(int i=0 ; i<f.nbOfClauses ; i++)
-    {
-        res.clauses[i] = copy(f.clauses[i]);
-    }
-
-    return res;
-}
-
-static assignment copy(assignment& a)
-{
-    assignment res;
-    res.resize(std::distance(a.begin(), a.end()));
-    std::copy(a.begin(), a.end(), res.begin());
-    return res;
-}
-
-static void dealloc(clause& c)
-{
-    delete[] c.literals;
-}
-
-static void dealloc(formula& f)
-{
-    for(int i=0 ; i<f.initialNbOfClauses ; i++)
-    {
-        dealloc(f.clauses[i]);
-    }
-    
-    delete[] f.clauses;
-}
-
+#ifdef PRINT_BACKTRACKING
 int min_backtrack_level = -1;
+#endif
 
 void SATSolver::check_sat_given_partial_assignment(formula& f, assignment& partial, int level)
 {
@@ -265,7 +214,7 @@ void SATSolver::check_sat_given_partial_assignment(formula& f, assignment& parti
     if(l>0)
     {
         try{
-            assignment a = copy(partial);
+            assignment a = deepcopy(partial);
             a[l] = 1;
             fbis = copy(f);
             unit_propagate(l,fbis);
@@ -273,22 +222,23 @@ void SATSolver::check_sat_given_partial_assignment(formula& f, assignment& parti
         }
         catch(UNSAT &e)
         {
+#ifdef PRINT_BACKTRACKING
             if(min_backtrack_level == -1 || min_backtrack_level>level)
             {
                 min_backtrack_level = level;
                 printf("Backtracking to level %d\n",level);
             }
-            assignment a = copy(partial);
-            a[l] = -1;
+#endif
+            partial[l] = -1;
             dealloc(fbis);
             unit_propagate(-l,f);
-    	    check_sat_given_partial_assignment(f,a,level+1);
+    	    check_sat_given_partial_assignment(f,partial,level+1);
         }
     }
     else
     {
         try{
-            assignment a = copy(partial);
+            assignment a = deepcopy(partial);
             a[-l] = -1;
             fbis = copy(f);
             unit_propagate(l,fbis);
@@ -296,16 +246,17 @@ void SATSolver::check_sat_given_partial_assignment(formula& f, assignment& parti
         }
         catch(UNSAT &e)
         {
+#ifdef PRINT_BACKTRACKING
             if(min_backtrack_level == -1 || min_backtrack_level>level)
             {
                 min_backtrack_level = level;
                 printf("Backtracking to level %d\n",level);
             }
-            assignment a = copy(partial);
-            a[-l] = 1;
+#endif
+            partial[-l] = 1;
             dealloc(fbis);
             unit_propagate(-l,f);
-            check_sat_given_partial_assignment(f,a,level+1);
+            check_sat_given_partial_assignment(f,partial,level+1);
         }
     }
     

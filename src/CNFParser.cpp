@@ -6,6 +6,7 @@
  */
 
 #include "CNFParser.h"
+#include "config.h"
 #include <string>
 #include <fstream>
 #include <stdexcept>
@@ -23,8 +24,11 @@ static void skipLine(FILE* file)
 formula CNFParser::parseFormulaFromFile(std::string file_path)
 {
 	formula res;
+    res.source_file = file_path;
 
+#ifdef VERBOSE_CNF_READ
 	printf("Reading cnf file %s ...\n",file_path.c_str());
+#endif
 
 	FILE* file = fopen(file_path.c_str(),"r");
 
@@ -51,8 +55,10 @@ formula CNFParser::parseFormulaFromFile(std::string file_path)
 
 	fscanf(file, " %d %d", &res.nbOfVariables, &res.nbOfClauses);
 
+#ifdef VERBOSE_CNF_READ
 	printf("Nb of variables : %d\n", res.nbOfVariables);
 	printf("Nb of clauses : %d\n", res.nbOfClauses);
+#endif
 
 	skipLine(file);
 
@@ -87,7 +93,9 @@ formula CNFParser::parseFormulaFromFile(std::string file_path)
 			j++;
 		}
 	}
+#ifdef VERBOSE_CNF_READ
 	printf("CNF file was successfully read.\n\n");
+#endif
 
 	return res;
 }
