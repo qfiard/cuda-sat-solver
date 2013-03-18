@@ -27,7 +27,7 @@ void CPUBenchmark::process()
         }
         catch(SAT &e)
         {
-            printf("%4.1f%% ",100*progress);
+            printf("%5.1f%% ",100*progress);
             if(this->hasExpectedSat())
             {
                 if(this->isSatExpected())
@@ -47,7 +47,7 @@ void CPUBenchmark::process()
         }
         catch(UNSAT &e)
         {
-            printf("%2f%% ",100*progress);
+            printf("%5.1f%% ",100*progress);
             if(this->hasExpectedSat())
             {
                 if(!this->isSatExpected())
