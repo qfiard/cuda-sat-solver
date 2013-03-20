@@ -9,16 +9,8 @@
 
 #include "SATSolver.h"
 #include <math.h>
+#include <stdlib.h>
 #include "UserInterface.h"
-
-inline static int abs(int a)
-{
-    if(a>0)
-    {
-        return a;
-    }
-    return -a;
-}
 
 void SATSolver::remove_literal_from_clause(uint32_t index_to_remove, clause &c)
 {

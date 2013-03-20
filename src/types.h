@@ -56,16 +56,18 @@ public:
 
 	}
 
+	virtual ~SAT() throw ()
+	{
+        
+	}
+
 	assignment& getAssigment()
 	{
 		return a;
 	}
 };
 
-class UNSAT : public std::exception
-{
-
-};
+typedef std::exception UNSAT;
 
 typedef std::map<std::string, double> time_map;
 
