@@ -30,6 +30,7 @@ typedef struct {
 } formula;
 
 typedef struct {
+	bool unsat;
 	uint32_t length;
 	literal* literals;
 } assignment;
@@ -43,8 +44,10 @@ clause deepcopy(clause& c);
 assignment deepcopy(assignment& a);
 formula deepcopy(formula& f);
 void dealloc(clause& c);
+void dealloc(assignment& a);
 void dealloc(formula& f);
 void deep_dealloc(clause& c);
+void deep_dealloc(assignment& c);
 void deep_dealloc(formula& f);
 
 #ifdef __cplusplus
@@ -54,14 +57,19 @@ class SAT : public std::exception
 private:
 	assignment a;
 public:
-	SAT(assignment &a) : a(a)
+	SAT(assignment &a)
 	{
+		this->a = deepcopy(a);
+	}
 
+	SAT(SAT &e) : std::exception(e)
+	{
+		this->a = deepcopy(e.a);
 	}
 
 	virtual ~SAT() throw ()
 	{
-        
+        deep_dealloc(a);
 	}
 
 	assignment& getAssigment()

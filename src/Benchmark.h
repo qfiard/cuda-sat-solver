@@ -31,7 +31,8 @@ protected:
     benchmark_data computeBenchmarkData();
     
     Benchmark(Benchmark& benchmark);
-    virtual void process();
+    void process();
+    virtual void check_sat(formula& f);
     benchmark_data run();
 
 private:

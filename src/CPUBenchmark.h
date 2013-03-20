@@ -16,7 +16,7 @@ class CPUBenchmark : public Benchmark
 {
 protected:
     CPUBenchmark(Benchmark& benchmark);
-    void process();
+    void check_sat(formula& f);
 public:
     std::string getName();
 

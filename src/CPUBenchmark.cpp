@@ -15,57 +15,9 @@ CPUBenchmark::CPUBenchmark(Benchmark& benchmark) : Benchmark(benchmark)
     
 }
 
-void CPUBenchmark::process()
+void CPUBenchmark::check_sat(formula& f)
 {
-    for(int i=0 ; i<this->formulae.size() ; i++)
-    {
-        double progress = double(i+1)/this->formulae.size();
-        
-        formula& f = this->formulae[i];
-        try {
-            SATSolver::check_sat(f);
-        }
-        catch(SAT &e)
-        {
-            printf("%5.1f%% ",100*progress);
-            if(this->hasExpectedSat())
-            {
-                if(this->isSatExpected())
-                {
-                    printf("[SUCCESS] ");
-                }
-                else
-                {
-                    printf("[FAILED] ");
-                }
-            }
-#ifdef PRINT_FILE_NAMES
-            printf("SAT %s\n", f.source_file.c_str());
-#else
-            printf("SAT\n");
-#endif
-        }
-        catch(UNSAT &e)
-        {
-            printf("%5.1f%% ",100*progress);
-            if(this->hasExpectedSat())
-            {
-                if(!this->isSatExpected())
-                {
-                    printf("[SUCCESS] ");
-                }
-                else
-                {
-                    printf("[FAILED] ");
-                }
-            }
-#ifdef PRINT_FILE_NAMES
-            printf("UNSAT %s\n", f.source_file.c_str());
-#else
-            printf("UNSAT\n");
-#endif
-        }
-    }
+	SATSolver::check_sat(f);
 }
 
 std::string CPUBenchmark::getName()

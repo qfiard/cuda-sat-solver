@@ -12,6 +12,25 @@
 #include <stdlib.h>
 #include "UserInterface.h"
 
+static literal choose_next_literal_static(formula& f, assignment& partial);
+
+literal choose_next_literal_static(formula& f, assignment& partial)
+{
+	for(int i=0 ; i<f.nbOfClauses ; i++)
+	{
+		clause& c = f.clauses[i];
+		for(int j=0 ; j<c.length ; j++)
+		{
+			literal& l = c.literals[j];
+			if(partial.literals[abs(l)] == 0)
+			{
+				return l;
+			}
+		}
+	}
+	return 0;
+}
+
 void SATSolver::remove_literal_from_clause(uint32_t index_to_remove, clause &c)
 {
 	//We exchange this literal and the last one in c
@@ -144,26 +163,20 @@ void SATSolver::assign_pure_literals(formula& f, assignment& partial)
 
 literal SATSolver::choose_next_literal(formula& f, assignment& partial)
 {
-	for(int i=0 ; i<f.nbOfClauses ; i++)
+	literal res = choose_next_literal_static(f,partial);
+	if(res==0)
 	{
-		clause& c = f.clauses[i];
-		for(int j=0 ; j<c.length ; j++)
-		{
-			literal& l = c.literals[j];
-			if(partial.literals[abs(l)] == 0)
-			{
-				return l;
-			}
-		}
+		throw UNSAT();
 	}
-    throw UNSAT();
+	return res;
 }
 
 void SATSolver::check_sat_status(formula& f, assignment& partial)
 {
     if(f.nbOfClauses==0)
 	{
-		throw SAT(partial);
+    	SAT e(partial);
+		throw e;
 	}
 
 	for(int i=0 ; i<f.nbOfClauses ; i++)
@@ -177,7 +190,7 @@ void SATSolver::check_sat_status(formula& f, assignment& partial)
 }
 
 #ifdef PRINT_BACKTRACKING
-int min_backtrack_level = -1;
+static int min_backtrack_level = -1;
 #endif
 
 void SATSolver::check_sat_given_partial_assignment(formula& f, assignment& partial, int level)
@@ -254,4 +267,19 @@ void SATSolver::check_sat(formula& f)
         partial.literals[i] = 0;
     }
 	check_sat_given_partial_assignment(f, partial, 0);
+}
+
+void remove_literal_from_clause(uint32_t index_to_remove, clause &c)
+{
+	return SATSolver::remove_literal_from_clause(index_to_remove,c);
+}
+
+void remove_clause_from_formula(uint32_t index_to_remove, formula &f)
+{
+	return SATSolver::remove_clause_from_formula(index_to_remove,f);
+}
+
+literal choose_next_literal(formula& f, assignment& partial)
+{
+	return choose_next_literal_static(f,partial);
 }

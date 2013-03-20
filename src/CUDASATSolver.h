@@ -9,6 +9,6 @@
 #define CUDASATSOLVER_H_
 #include "types.h"
 
-bool check_sat(formula* f);
+assignment* cuda_check_sat(formula& f);
 
 #endif /* CUDASATSOLVER_H_ */

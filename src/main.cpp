@@ -10,10 +10,7 @@
 #include <iostream>
 #include <typeinfo>
 
-char host_solution[501];
-
 int main(int argc, char *argv[]) {
-
     if(argc < 2)
     {
         printf("Usage : %s sat file_or_folder1 file_or_folder2 ...",argv[0]);
@@ -21,7 +18,7 @@ int main(int argc, char *argv[]) {
     }
 
     try {
-        bool* sat_expected = NULL;;
+        bool* sat_expected = NULL;
         std::vector<std::string> files;
         for(int i=1 ; i<argc ; i++)
         {

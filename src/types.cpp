@@ -36,7 +36,7 @@ formula copy(formula& f)
     formula res = f;
 
     res.initialNbOfClauses = f.nbOfClauses;
-    res.clauses = new clause[f.nbOfClauses];
+    res.clauses = (clause*)malloc(f.nbOfClauses*sizeof(clause));
 
     for(int i=0 ; i<f.nbOfClauses ; i++)
     {
@@ -50,7 +50,7 @@ clause deepcopy(clause& c)
 {
     clause res = c;
 
-    res.literals = new literal[c.length];
+    res.literals = (literal*)malloc(c.length*sizeof(literal));
 
     for(int i=0 ; i<c.length ; i++)
     {
@@ -64,7 +64,7 @@ assignment deepcopy(assignment& a)
 {
 	assignment res = a;
 
-    res.literals = new literal[a.length];
+    res.literals = (literal*)malloc(a.length*sizeof(literal));
 
     for(int i=0 ; i<a.length ; i++)
     {
@@ -79,7 +79,7 @@ formula deepcopy(formula& f)
     formula res = f;
 
     res.initialNbOfClauses = f.nbOfClauses;
-    res.clauses = new clause[f.nbOfClauses];
+    res.clauses = (clause*)malloc(f.nbOfClauses*sizeof(clause));
 
     for(int i=0 ; i<f.nbOfClauses ; i++)
     {
@@ -94,6 +94,11 @@ void dealloc(clause& c)
     
 }
 
+void dealloc(assignment& a)
+{
+
+}
+
 void dealloc(formula& f)
 {
     for(int i=0 ; i<f.initialNbOfClauses ; i++)
@@ -101,12 +106,17 @@ void dealloc(formula& f)
         dealloc(f.clauses[i]);
     }
 
-    delete[] f.clauses;
+    free(f.clauses);
 }
 
 void deep_dealloc(clause& c)
 {
-    delete[] c.literals;
+    free(c.literals);
+}
+
+void deep_dealloc(assignment& a)
+{
+    free(a.literals);
 }
 
 void deep_dealloc(formula& f)
@@ -116,5 +126,5 @@ void deep_dealloc(formula& f)
         deep_dealloc(f.clauses[i]);
     }
 
-    delete[] f.clauses;
+    free(f.clauses);
 }

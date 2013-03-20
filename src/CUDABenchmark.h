@@ -16,7 +16,8 @@ class CUDABenchmark : public Benchmark
 {
 protected:
     CUDABenchmark(Benchmark& benchmark);
-    void process();
+    void check_sat(formula& f);
+
 public:
     std::string getName();
 

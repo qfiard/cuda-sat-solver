@@ -12,10 +12,9 @@
 #include <map>
 
 class SATSolver {
-private:
+public:
 	static void check_sat_given_partial_assignment(formula& f, assignment& partial, int level);
 
-	static void unit_propagate(formula& f, assignment& partial);
 	static void process_unit_clauses(formula& f, assignment& partial);
 	static void assign_pure_literals(formula& f, assignment& partial);
 
@@ -27,8 +26,15 @@ private:
 
 	static literal choose_next_literal(formula& f, assignment& partial);
 
-public:
 	static void check_sat(formula& f);
 };
+
+/*
+ * For use in CUDA code
+ */
+
+literal choose_next_literal(formula& f, assignment& partial);
+void remove_literal_from_clause(uint32_t index_to_remove, clause &c);
+void remove_clause_from_formula(uint32_t index_to_remove, formula &f);
 
 #endif /* SATSOLVER_H_ */

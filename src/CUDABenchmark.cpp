@@ -14,9 +14,24 @@ CUDABenchmark::CUDABenchmark(Benchmark& benchmark) : Benchmark(benchmark)
 
 }
 
-void CUDABenchmark::process()
+void CUDABenchmark::check_sat(formula& f)
 {
+	assignment* a = cuda_check_sat(f);
+	if(a->unsat)
+	{
+		dealloc(*a);
+		delete a;
 
+		throw UNSAT();
+	}
+	else
+	{
+		SAT e(*a);
+		deep_dealloc(*a);
+		delete a;
+
+		throw e;
+	}
 }
 
 std::string CUDABenchmark::getName()
