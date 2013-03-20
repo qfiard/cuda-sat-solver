@@ -17,14 +17,14 @@ void UserInterface::alert_unsat(UNSAT &e)
 
 void UserInterface::print(assignment& a)
 {
-	for(int i=1 ; i<a.size() ; i++)
+	for(int i=1 ; i<a.length ; i++)
 	{
 		std::string disp_value = "true";
-		if(a[i]==0)
+		if(a.literals[i]==0)
 		{
 			disp_value = "not important";
 		}
-		if(a[i]==-1)
+		if(a.literals[i]==-1)
 		{
 			disp_value = "false";
 		}

@@ -10,7 +10,10 @@
 #define cuda_sat_solver_config_h
 
 //#define VERBOSE_CNF_READ
-#define PRINT_FILE_NAMES
+//#define PRINT_FILE_NAMES
 //#define PRINT_BACKTRACKING
+
+#define RUN_CPU_BENCHMARK
+//#define RUN_CUDA_BENCHMARK
 
 #endif

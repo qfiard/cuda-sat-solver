@@ -19,9 +19,15 @@ bool compare(formula f1, formula f2)
     return complexity(f1)<complexity(f2);
 }
 
-clause copy(clause c)
+clause copy(clause& c)
 {
     clause res = c;
+    return res;
+}
+
+assignment copy(assignment& a)
+{
+	assignment res = a;
     return res;
 }
 
@@ -40,13 +46,7 @@ formula copy(formula& f)
     return res;
 }
 
-assignment copy(assignment& a)
-{
-    assignment res = a;
-    return res;
-}
-
-clause deepcopy(clause c)
+clause deepcopy(clause& c)
 {
     clause res = c;
 
@@ -55,6 +55,20 @@ clause deepcopy(clause c)
     for(int i=0 ; i<c.length ; i++)
     {
         res.literals[i] = c.literals[i];
+    }
+
+    return res;
+}
+
+assignment deepcopy(assignment& a)
+{
+	assignment res = a;
+
+    res.literals = new literal[a.length];
+
+    for(int i=0 ; i<a.length ; i++)
+    {
+        res.literals[i] = a.literals[i];
     }
 
     return res;
@@ -72,14 +86,6 @@ formula deepcopy(formula& f)
         res.clauses[i] = deepcopy(f.clauses[i]);
     }
 
-    return res;
-}
-
-assignment deepcopy(assignment& a)
-{
-    assignment res;
-    res.resize(std::distance(a.begin(), a.end()));
-    std::copy(a.begin(), a.end(), res.begin());
     return res;
 }
 

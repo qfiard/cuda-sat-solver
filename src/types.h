@@ -29,22 +29,25 @@ typedef struct {
 	clause* clauses;
 } formula;
 
-typedef std::vector<int8_t> assignment;
-
+typedef struct {
+	uint32_t length;
+	literal* literals;
+} assignment;
 
 bool compare(formula f1, formula f2);
 
-clause copy(clause c);
-formula copy(formula& f);
+clause copy(clause& c);
 assignment copy(assignment& a);
-clause deepcopy(clause c);
-formula deepcopy(formula& f);
+formula copy(formula& f);
+clause deepcopy(clause& c);
 assignment deepcopy(assignment& a);
+formula deepcopy(formula& f);
 void dealloc(clause& c);
 void dealloc(formula& f);
 void deep_dealloc(clause& c);
 void deep_dealloc(formula& f);
 
+#ifdef __cplusplus
 
 class SAT : public std::exception
 {
@@ -82,5 +85,7 @@ typedef struct {
 
 typedef std::string path;
 typedef std::vector<path> paths;
+
+#endif
 
 #endif /* TYPES_H_ */

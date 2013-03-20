@@ -7,6 +7,7 @@
 //
 
 #include "CUDABenchmark.h"
+#include "CUDASATSolver.h"
 
 CUDABenchmark::CUDABenchmark(Benchmark& benchmark) : Benchmark(benchmark)
 {
@@ -15,7 +16,7 @@ CUDABenchmark::CUDABenchmark(Benchmark& benchmark) : Benchmark(benchmark)
 
 void CUDABenchmark::process()
 {
-    
+
 }
 
 std::string CUDABenchmark::getName()

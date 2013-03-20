@@ -16,6 +16,7 @@
 
 #include "CPUBenchmark.h"
 #include "CUDABenchmark.h"
+#include "config.h"
 
 static void add_files_with_parent(path parent, paths &v)
 {
@@ -117,10 +118,19 @@ void Benchmark::process()
 
 void Benchmark::processBenchmarks()
 {
+#ifdef RUN_CPU_BENCHMARK
     CPUBenchmark benchmark1(*this);
     benchmark_data d1 = benchmark1.run();
 
     UserInterface::print(d1);
+#endif
+
+#ifdef RUN_CUDA_BENCHMARK
+    CUDABenchmark benchmark2(*this);
+    benchmark_data d2 = benchmark2.run();
+
+    UserInterface::print(d2);
+#endif
 }
 
 void Benchmark::startBenchmarks(Benchmark &main)

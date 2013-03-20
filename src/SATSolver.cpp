@@ -63,15 +63,15 @@ void SATSolver::process_unit_clauses(formula& f, assignment& partial)
 		{
 			literal& l = c.literals[0];
 
-            if(partial[abs(l)]==0)
+            if(partial.literals[abs(l)]==0)
             {
                 if(l>0)
                 {
-                    partial[l] = 1;
+                    partial.literals[l] = 1;
                 }
                 else
                 {
-                    partial[-l] = -1;
+                    partial.literals[-l] = -1;
                 }
                 unit_propagate(l,f);
 
@@ -112,17 +112,17 @@ void SATSolver::assign_pure_literals(formula& f, assignment& partial)
 
 	for(int i=1 ; i<f.nbOfVariables+1 ; i++)
 	{
-		if(partial[i] == 0 && positive[i] ^ negative[i])
+		if(partial.literals[i] == 0 && positive[i] ^ negative[i])
 		{
 			if(positive[i])
 			{
-				partial[i] = 1;
+				partial.literals[i] = 1;
 				unit_propagate(i,f);
 				changed = true;
 			}
 			else
 			{
-				partial[i] = -1;
+				partial.literals[i] = -1;
 				unit_propagate(-i,f);
 				changed = true;
 			}
@@ -150,7 +150,7 @@ literal SATSolver::choose_next_literal(formula& f, assignment& partial)
 		for(int j=0 ; j<c.length ; j++)
 		{
 			literal& l = c.literals[j];
-			if(partial[abs(l)] == 0)
+			if(partial.literals[abs(l)] == 0)
 			{
 				return l;
 			}
@@ -174,16 +174,6 @@ void SATSolver::check_sat_status(formula& f, assignment& partial)
 			throw UNSAT();
 		}
 	}
-
-    bool test = false;
-    for(int i = 1 ; i<partial.size() ; i++)
-    {
-        test |= (partial[i]==0);
-    }
-    if(!test)
-    {
-        printf("Test");
-    }
 }
 
 #ifdef PRINT_BACKTRACKING
@@ -207,7 +197,7 @@ void SATSolver::check_sat_given_partial_assignment(formula& f, assignment& parti
     {
         try{
             assignment a = deepcopy(partial);
-            a[l] = 1;
+            a.literals[l] = 1;
             fbis = copy(f);
             unit_propagate(l,fbis);
     	    check_sat_given_partial_assignment(fbis,a,level+1);
@@ -221,7 +211,7 @@ void SATSolver::check_sat_given_partial_assignment(formula& f, assignment& parti
                 printf("Backtracking to level %d\n",level);
             }
 #endif
-            partial[l] = -1;
+            partial.literals[l] = -1;
             dealloc(fbis);
             unit_propagate(-l,f);
     	    check_sat_given_partial_assignment(f,partial,level+1);
@@ -231,7 +221,7 @@ void SATSolver::check_sat_given_partial_assignment(formula& f, assignment& parti
     {
         try{
             assignment a = deepcopy(partial);
-            a[-l] = -1;
+            a.literals[-l] = -1;
             fbis = copy(f);
             unit_propagate(l,fbis);
     	    check_sat_given_partial_assignment(fbis,a,level+1);
@@ -245,7 +235,7 @@ void SATSolver::check_sat_given_partial_assignment(formula& f, assignment& parti
                 printf("Backtracking to level %d\n",level);
             }
 #endif
-            partial[-l] = 1;
+            partial.literals[-l] = 1;
             dealloc(fbis);
             unit_propagate(-l,f);
             check_sat_given_partial_assignment(f,partial,level+1);
@@ -256,10 +246,12 @@ void SATSolver::check_sat_given_partial_assignment(formula& f, assignment& parti
 
 void SATSolver::check_sat(formula& f)
 {
-	assignment* partial = new assignment(f.nbOfVariables+1);
-    for(int i=0 ; i<partial->size() ; i++)
+	assignment partial;
+	partial.length = f.nbOfVariables;
+	partial.literals = new literal[partial.length];
+    for(int i=0 ; i<partial.length ; i++)
     {
-        partial->at(i) = 0;
+        partial.literals[i] = 0;
     }
-	check_sat_given_partial_assignment(f, *partial, 0);
+	check_sat_given_partial_assignment(f, partial, 0);
 }
