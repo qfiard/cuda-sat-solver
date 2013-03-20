@@ -67,7 +67,10 @@ public:
 	}
 };
 
-typedef std::exception UNSAT;
+class UNSAT : public std::exception
+{
+
+};
 
 typedef std::map<std::string, double> time_map;
 
