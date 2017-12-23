@@ -11,6 +11,7 @@
 #include "config.h"
 #include <stdint.h>
 #include <string>
+#include <cstring>
 #include <vector>
 #include <map>
 

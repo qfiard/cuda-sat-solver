@@ -13,6 +13,7 @@
 #include <sys/stat.h>
 #include <algorithm>
 #include <time.h>
+#include <stdio.h>
 
 #include "CPUBenchmark.h"
 #include "CUDABenchmark.h"
