@@ -7,6 +7,7 @@
 //
 
 #include "types.h"
+#include <stdlib.h>
 #include <math.h>
 
 static double complexity(formula f)
